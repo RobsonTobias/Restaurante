@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante - Seleção de Pedidos</title>
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+        /* Estilos para o corpo da página */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ca4738;
+        }
+
+        /* Estilos para os cabeçalhos */
+        h1 {
+            color: #f7f7f5;
+            font-family: 'Rye', cursive;
+            text-shadow: #000000d8 2px 3px 5px;
+        }
+
+        h2 {
+            color: #666;
+        }
+
+        /* Estilos para os formulários */
+        form {
+            background-color: #3a3b38;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        input[type="submit"] {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333333;
+            background-color: #fff017;
+            padding: 15px;
+            border-radius: 50px;
+        }
+
+        input[type="text"] {
+            width: 50px;
+            text-align: center;
+            height: 20px;
+        }
+
+        /* Estilos para a lista de produtos */
+        ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        li {
+            margin-bottom: 5px;
+            margin-inline: 70px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #BBA25E;
+            border: 2px solid #BBA25E;
+            border-radius: 30px;
+            height: 130px;
+        }
+
+        /* Estilos para os links */
+        a {
+            text-decoration: none;
+            color: #0074d9;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            width: 170px;
+            position: relative;
+            height: 170px;
+            border-radius: 50%;
+            border: 5px solid #ca4738;
+            margin: -80px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.651);
+            transition: transform .5s ease;
+        }
+
+        img.zoom:hover {
+            transform: scale(1.1);
+        }
+
+        .produto {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            margin-left: 100px;
+            text-align: justify;
+            padding-right: 10px;
+        }
+
+        .mais {
+            background-color: #729049;
+            color: #fff;
+            border-radius: 25%;
+            width: 30px;
+            height: 30px;
+        }
+
+        .menos {
+            background-color: #f44336;
+            color: #fff;
+            border-radius: 25%;
+            width: 30px;
+            height: 30px;
+        }
+
+        text {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        footer {
+            font-family: 'Nunito', sans-serif;
+            font-weight: bold;
+            text-align: center;
+            color: #f7f7f5;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex; justify-content: center;">
+        <h1>Hamburgueria TaubaTEXAS</h1>
+    </div>
+    <form action="pedido.php" method="POST">
+        <div>
+            <ul>
+                <li>
+                    <img src="images/01.jpg" alt="Hamburguer" class="zoom">
+                    <div class="produto">
+                        <label for="item1"><b>Hamburguer - R$10,00</b></label>
+                        <Text>Pão brioche, carne, queijo, cebola roxa, tomate, alface e molho especial.</Text><br>
+                        <div>
+                            <button class="menos" type="button" onclick="decrementQuantity('item1')">-</button>
+                            <input type="text" inputmode="numeric" name="item1" id="item1" min="0" value="0">
+                            <button class="mais" type="button" onclick="incrementQuantity('item1')">+</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <img src="images/02.png" alt="Pizza" class="zoom">
+                    <div class="produto">
+                        <label for="item2"><b> Pizza - R$15,00</b></label>
+                        <Text>Molho especial de tomate, muzarela, presunto, ervilhas, bacon e cebola.</Text><br>
+                        <div>
+                            <button class="menos" type="button" onclick="decrementQuantity('item2')">-</button>
+                            <input type="text" inputmode="numeric" name="item2" id="item2" min="0" value="0">
+                            <button class="mais" type="button" onclick="incrementQuantity('item2')">+</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <img src="images/03.jpg" alt="Batata Frita" class="zoom">
+                    <div class="produto">
+                        <label for="item3"><b> Batata Frita - R$5,00</b></label>
+                        <Text>Porção de batata frita com opcional de adeição de cheddar e bacon.</Text><br>
+                        <div>
+                            <button class="menos" type="button" onclick="decrementQuantity('item3')">-</button>
+                            <input type="text" inputmode="numeric" name="item3" id="item3" min="0" value="0">
+                            <button class="mais" type="button" onclick="incrementQuantity('item3')">+</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <img src="images/refri.png" alt="Refrigerante" class="zoom">
+                    <div class="produto">
+                        <label for="item4"><b> Refrigerante lata - R$7,00</b></label>
+                        <Text>Coca-cola (normal e zero), Guaraná Kuat, Fanta e Schweppes.</Text><br>
+                        <div>
+                            <button class="menos" type="button" onclick="decrementQuantity('item4')">-</button>
+                            <input type="text" inputmode="numeric" name="item4" id="item4" min="0" value="0">
+                            <button class="mais" type="button" onclick="incrementQuantity('item4')">+</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <img src="images/acai.jpg" alt="Açaí" class="zoom">
+                    <div class="produto">
+                        <label for="item5"><b> Açaí - R$15,00</b></label>
+                        <Text>Copo de açaí 500 ml: escolha até 3 adicionais.</Text><br>
+                        <div>
+                            <button class="menos" type="button" onclick="decrementQuantity('item5')">-</button>
+                            <input type="text" inputmode="numeric" name="item5" id="item5" min="0" value="0">
+                            <button class="mais" type="button" onclick="incrementQuantity('item5')">+</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <div style="display: flex; justify-content: center; margin-top: 50px;">
+            <input type="submit" value="Adicionar ao Pedido">
+        </div>
+    </form>
+    <footer>
+        <p>Desenvolvimento de Sistemas - Programação Web II</p>
+        <p>Developed by Robson Tobias</p>
+    </footer>
+    <script>
+        function incrementQuantity(product) {
+            const inputElement = document.getElementById(product);
+            inputElement.value = parseInt(inputElement.value) + 1;
+        }
+
+        function decrementQuantity(product) {
+            const inputElement = document.getElementById(product);
+            if (parseInt(inputElement.value) > 0) {
+                inputElement.value = parseInt(inputElement.value) - 1;
+            }
+        }
+    </script>
+</body>
+
+</html>
